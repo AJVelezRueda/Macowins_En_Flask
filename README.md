@@ -104,12 +104,80 @@ def get_prenda(id):
 
 Ahora, nuestro `id` deberá ser un entero, y lo recibiremos como tal. 
 
-Mostrando que se pueden devolver cosas diferentes
-    Mostrando en particular
-        HTML
-        JSON (e introduciendo la idea de API vs App Web)
-        Otros formatos (ejemplo CSV)
-Un ejemplo un poco mas completo con todo (y un diccionario en memoria, y/o una generaciòn de un CSV a partir de un DF) 
+## Usando datos
+
+TODO
+
+```python
+prendas = {
+    100: {"name": "Remera talle m", "price": 50},
+    150: {"name": "Remera talle s", "price": 40}
+}
+```
+
+TODO: mencionar que podría salir de una base de datos, de un archivo CSV o un DataFrame. 
+
+## Plantillas
+
+Generar el HTML directamente en el archivo de rutas puede ser cómo para empezar, pero rápidamente se vuelve engorroso a medida que se torna más complejo y agregamos tags. Entonces nos convendrá extraer esos HTMLs a un archivo aparte, llamado plantilla (template, en inglés). 
+
+Por ejemplo, si queremos ahora llevar nuestro HTML de home a una plantilla, deberemos crear un directorio `templates` y dentro de éste, un archivo `home.html` con el siguiente código... 
+
+```html
+<!doctype html>
+<p>Te damos la bienvenida a MacoWins</p>
+```
+
+...y debemos alterar nuestra función home así: 
+
+```python
+@app.get("/")
+def home():
+    return render_template("home.html")
+```
+
+De esta forma, estaremos instruyendo a Flask que al recibir un pedido GET a /, dibuje el contenido de `home.html`. 
+
+Si bien este primer ejemplo es completamente estático (es decir, no está parametrizado de ninguna forma), podemos generar también contenido dinámico. Para ello aprovecharemos la sintaxis de jinja TODO link:
+
+```hbs
+<!doctype html>
+<p>Mostrando la prenda {{ id }}</p>
+<p>La prenda vale ${{ prenda.price }}</p>
+```
+
+Como vemos, podemos agregar a nuestros archivos HTML parámetros. Éstos los pasaremos desde nuestro archivo de rutas: 
+
+```python
+@app.get("/prendas/<int:id>")
+def get_prenda(id):
+    prenda = prendas[id]
+    return render_template('prenda.html', id=id, prenda=prenda)
+```
+
+TODO: 
+
+mostrar el 404
 
 
+@app.get("/prendas/<int:id>")
+def get_prenda(id):
+    if id in prendas:
+        prenda = prendas[id]
+        return render_template('prenda.html', id=id, prenda=prenda)
+    else:
+        return ("no hay prenda", 404)
 
+mostrar url_for
+
+<!doctype html>
+<p>Te damos la bienvenida a MacoWins</p>
+<a href="{{ url_for('get_all_prendas') }}">Ver todas las prendas</a>
+
+mostrar for en jinja
+
+@app.get("/prendas/")
+def get_all_prendas():
+    return render_template("prendas.html", prendas=prendas.items())
+
+mostrar JSON
