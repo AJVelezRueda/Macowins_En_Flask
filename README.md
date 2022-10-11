@@ -1,6 +1,6 @@
 # Macowins en Flask
 
-> Flask es un micro framework web, que nos permite la construcción de APIs y aplicaciones REST.  
+> Flask es un micro framework web, que nos permite la construcción de APIs y aplicaciones REST.  Está diseñado para que empezar sea rápido y fácil, con la capacidad de escalar a aplicaciones complejas. Flask ofrece sugerencias, pero no impone dependencias ni diseño de proyecto. 
 
 ## Instalación
 
