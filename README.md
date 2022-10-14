@@ -183,7 +183,7 @@ def get_prenda(id):
         return ("no hay prenda", 404)
 ```
 
-### URL Dinámicas
+### URLs Dinámicas
 Cómo hemos visto en la sección anterior, podemos crear una URL para acceder a cada recurso, utilizando parámetros. Sin embargo, la construcción de las URL puede hacerse de forma dinámica para una función específica, utilizando la función `url_for()`. `url_for()` toma como primer argumento el nombre de la función, y luego como segundo argumento cualquier número de argumentos de palabras clave correspondientes a la parte variable de la URL:
 
 ```html
