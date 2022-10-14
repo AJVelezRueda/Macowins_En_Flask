@@ -169,7 +169,7 @@ def get_prenda(id):
 
 Pero ¿qué sucede si intentamos acceder a la prenda `200`? Bueno, como has podido ver obtenemos un error:
 
-<img src="./assets/error_404.png" style="width: 3000px">
+<img src="./assets/Error_404.png" style="width: 3000px">
 
 Esto es porque aún no le hemos dicho al servidor qué debe hacer en el caso de no encotrar el recurso que le han pedido, ni cómo comunicar esta situación. Podemos hacer una pequeña modificación a nuestra función `get_prenda` para que ante la posibilidad de recibir un pedido sobre un recurso que no se encuentra disponible, dé una respuesta más informativa:
 
