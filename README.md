@@ -5,7 +5,7 @@
 ## Instalación
 
 1. Creá un proyecto nuevo: `mkdir Macowins_En_Flask && cd Macowins_En_Flask`
-2. Iniciá un entorno virtual usando conda o venv:
+2. Iniciá un entorno virtual usando [conda](https://docs.conda.io/projects/conda/user-guide/concepts/environments.html) o venv:
     a. `conda create --name Macowins_En_Flask` 
     b. `python3 -m venv venv`
 3. Activá el entorno correspondiente:
