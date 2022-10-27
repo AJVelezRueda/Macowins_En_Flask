@@ -132,8 +132,41 @@ Si bien esta forma de persistencia nos resulta sencilla a la hora de aprender, n
 
 ## Una contribución 
 
+Ya vimos que permitir que se hagan pedidos a nuestra aplicación es fácil, ¿pero qué pasa si quisiéramos hacer un `POST`?
 
+Imaginemos que queremos permitir la gestion de nuevas prendas. Para ello vamos ahora a trabajar en la ruta `prendas/new` para hacerlo más simple, a la que vamos a vincular los verbos `GET` y `POST`:
 
+```python
+@app.route('/prendas/new/', methods=('GET', 'POST'))
+def create_prenda():
+    hacer algo
+```
+
+Ahora vamos a incorporar un comportamiento esperado sobre esta ruta, por ejemplo que cuando se hace `GET` la misma nos devuelva un formulario y cuando hacemos `POST`, luego de agregar los datos, nos redireccione a una nueva página:
+
+```python
+from flask import Flask, render_template, request, redirect, url_for
+
+@app.route('/prendas/new/', methods=('GET', 'POST'))
+def create_prenda():
+    if request.method == 'POST':
+        return redirect(url_for('success'))
+    else:
+      return render_template('new_prendas.html')
+```
+Esto estuvo muy bien, pero así como está el código, no tiene ningún efecto sobre los recursos de nuestra aplicación ¿Verdad? Bueno quizás nos sería útil tomar el valor que ingrese por el formulario, para poder almacenarlo en nuestra variable `prendas` usando el método `request.form.get()`:
+
+```python
+valor_input = request.form.get("name")
+```
+
+>
+> 🤔 Para pensar: ¿Qué tipo de dato es `valor_input`? 
+>
+> **🧗‍♀️ Desafío II**: modificá la función `create_prenda()` para que efectivamente agregue el valor ingresado en el formulario a la variable `prendas` ([Nota]: probá ingresar la prenda como `200,"Pantalón talle s",400`)
+>
+
+Como explicamos anteriormente, en nuestra aplicación no tenemos una base de datos vinculada en la cuál almacenar este valor ingresado por medio del form, sin embargo en un caso de uso real este caso de uso debería disparar un acción que modifique la base de datos... ¡Eso quedará para otro tutorial!
 
 ## Plantillas
 

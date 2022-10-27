@@ -32,12 +32,12 @@ def get_venta(id):
 def success():
    return render_template('success.html')
 
+
 @app.route('/prendas/new/', methods=('GET', 'POST'))
 def create_prenda():
     if request.method == 'POST':
+        valor_input = request.form.get("name").split(',')
+        prendas[int(valor_input[0])] = {"name": valor_input[1], "price": valor_input[2]}
         return redirect(url_for('success'))
     else:
       return render_template('new_prendas.html')
-    
-   
-   
