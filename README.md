@@ -129,6 +129,12 @@ que utiliza el DataFrame `prendas = pd.DataFrame({100: {"name": "Remera talle m"
 
 Si bien esta forma de persistencia nos resulta sencilla a la hora de aprender, no es cómoda cuando se trabaja con un grán número de recursos. Es por ello que en general se suelen utilizar [bases de datos](https://bdigital.uvhm.edu.mx/wp-content/uploads/2020/05/Bases-de-Datos.pdf), que son herramientas que permiten recopilar y organizar información.
 
+
+## Una contribución 
+
+
+
+
 ## Plantillas
 
 Generar el HTML directamente en el archivo de rutas puede ser cómo para empezar, pero rápidamente se vuelve engorroso a medida que se torna más complejo y agregamos tags. Entonces nos convendrá extraer esos HTMLs a un archivo aparte, llamado plantilla (template, en inglés). 
@@ -201,3 +207,31 @@ En jinja, debemos hacer:
 def get_all_prendas():
     return render_template("prendas.html", prendas=prendas.items())
 ```
+
+## ¡Ahora programamos con estilo!
+
+Hasta ahora, nuestra aplicación consta de un script de Python, que maneja la comunicación cliente-servidor, y algunos documentos HTML, que dan la estructura del contenido de las páginas. 
+
+Pero aún con dicha estructura, nuestro contenido se ve como un conjunto de textos en un fondo blanco. Es hora de agregar algún formato de estilo a las estructuras HTML y para ello vamos a usar CSS (hojas de estilo en cascada): 
+
+   1- Primero debemos crear un archivo de extención `.css`, en donde anotaremos los estilos que deseamos agregar a nuestras páginas. Así como generamos una carpeta de `templates` para las distntas páginas de nuestra aplicación, necesitaremos una carpeta `statics` para las hojas de estilo `CSS`. El nombre de la carpeta tiene que ver con que `Flask` considera las hojas de estilo como archivos estáticos, es decir que no se pueden generar dinámicamente se. También se considera una buena práctica crear otra carpeta dentro de `static`, de nombre `css` donde efectivamente dejaremos nuestros archivos `css`, que puede haber tantos como nos resulten necesario para estilar nuestra aplicación.
+
+   2- Vamos a crear la hoja de estilo y vincularla al documento `html` en cuestión, para que al cargarse la página pueda hacerlo con los estilos deseados. Para ello debemos usar la etiqueta `<link>` de HTML que nos permite vincular uno y otro documento.
+   
+   Intentemos entonces darle estilo a nuestra pàgina de bienvenida. para ello vamos a agregar la siguiente linea en el archivo `home.html`:
+
+   ```html
+   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+   ```
+
+   Y vamos a generar un archivo `main.css` dentro de `static/css`, que contenga el siguiente código:
+
+   ```css
+    p {
+        color:brown
+      }
+   ```
+
+   ¡Y voilà, ya tenemos nuestro casita más bonita! 😜
+
+¡Pero esto recién comienza, si querés adentrarte más en el mundo del `maquetado Web` te invito a revisar el [próximo tutorial](https://github.com/AJVelezRueda/Fundamentos_de_informatica/blob/master/WEB_%26_HTTP/maquetado.md)!
