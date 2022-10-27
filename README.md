@@ -163,7 +163,7 @@ valor_input = request.form.get("name")
 >
 > 🤔 Para pensar: ¿Qué tipo de dato es `valor_input`? 
 >
-> **🧗‍♀️ Desafío II**: modificá la función `create_prenda()` para que efectivamente agregue el valor ingresado en el formulario a la variable `prendas` ([Nota]: probá ingresar la prenda como `200,"Pantalón talle s",400`)
+> **🧗‍♀️ Desafío II**: modificá la función `create_prenda()` para que efectivamente agregue el valor ingresado en el formulario a la variable `prendas` [Nota]: probá ingresar la prenda como `200,"Pantalón talle s",400`
 >
 
 Como explicamos anteriormente, en nuestra aplicación no tenemos una base de datos vinculada en la cuál almacenar este valor ingresado por medio del form, sin embargo en un caso de uso real este caso de uso debería disparar un acción que modifique la base de datos... ¡Eso quedará para otro tutorial!
