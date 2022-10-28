@@ -132,9 +132,9 @@ Si bien esta forma de persistencia nos resulta sencilla a la hora de aprender, n
 
 ## Una contribución 
 
-Ya vimos que permitir que se hagan pedidos a nuestra aplicación es fácil, ¿pero qué pasa si quisiéramos hacer un `POST`?
+Ya vimos que permitir que se hagan pedidos a nuestra aplicación es fácil, ¿pero qué pasa si quisiéramos agregar nuevos recursos (`POST`)?
 
-Imaginemos que queremos permitir la gestion de nuevas prendas. Para ello vamos ahora a trabajar en la ruta `prendas/new` para hacerlo más simple, a la que vamos a vincular los verbos `GET` y `POST`:
+Imaginemos que queremos permitir la incorporación de nuevas prendas. Para ello vamos a trabajar en la ruta `prendas/new`, a la que vamos a vincular los verbos `GET` y `POST` a las acciones de cargar la información y agregar o enviar la información de nuevas prendas respectivamente:
 
 ```python
 @app.route('/prendas/new/', methods=('GET', 'POST'))
